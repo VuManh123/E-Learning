@@ -35,19 +35,20 @@ function FlashcardData() {
       try {
         // const apiRes = await commonApi.getWordPackTotal(pageInfo.packInfo);
 
-        // if (apiRes.status === 200 && isSubscribe) {
-        //   const { total = 0 } = apiRes.data;
-        //   if (total === 0) {
-        //     dispatch(
-        //       setMessage({
-        //         type: 'warning',
-        //         message: 'Gói từ vựng hiện tại không đủ, vui lòng thử lại sau.',
-        //         duration: 3000,
-        //       }),
-        //     );
-        //   }
-        //   setTotal(total);
-        // }
+        const apiRes = 200;
+        if (apiRes.status === 200 && isSubscribe) {
+          const { total = 0 } = apiRes.data;
+          if (total === 0) {
+            dispatch(
+              setMessage({
+                type: 'warning',
+                message: 'Gói từ vựng hiện tại không đủ, vui lòng thử lại sau.',
+                duration: 3000,
+              }),
+            );
+          }
+          setTotal(total);
+        }
       } catch (error) {
         setTotal(0);
       }

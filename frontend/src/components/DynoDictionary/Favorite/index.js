@@ -4,21 +4,18 @@ import InfiniteScroll from 'components/UI/InfiniteScroll';
 import WordSortModal from 'components/UI/WordSortModal';
 import PropTypes from 'prop-types';
 import React from 'react';
-import DynoDictionaryItemData from './Item/data';
-import DDSettingWordPack from './SettingWordPack';
-import DynoDictionarySkeleton from './Skeleton';
-import useStyle from './style';
+import DynoDictionaryItemData from '../Item/data';
+import DynoDictionarySkeleton from '../Skeleton';
+import useStyle from '../style';
 
-function DynoDictionary({
+function FavoriteDictionary({
   list,
   loading,
   onLoadData,
   more,
   isFirstLoad,
-  onSettingWordPack,
   onSortTypeChange,
   onSearchWord,
-  isTOEIC,
 }) {
   const classes = useStyle();
 
@@ -26,18 +23,12 @@ function DynoDictionary({
     <div className={`${classes.root} dyno-container`}>
       {/* title - menu */}
       <div className="flex-center-between">
-        <h1 className="dyno-title">Từ điển Dynonary</h1>
+        <h1 className="dyno-title">Từ điển của bạn</h1>
         <div>
           <WordSortModal
             onSelect={onSortTypeChange}
             classNameIcon="dyno-setting-icon mr-5"
           />
-          {!isTOEIC && (
-            <DDSettingWordPack
-              onChoose={onSettingWordPack}
-              classNameIcon="dyno-setting-icon"
-            />
-          )}
         </div>
       </div>
       <div className="dyno-break"></div>
@@ -76,7 +67,9 @@ function DynoDictionary({
                   ) : (
                     // empty list
                     <h3 className="notfound-title h-100 flex-center t-center">
-                      Không tìm thấy từ nào trong từ điển
+                      Bạn chưa đánh dấu từ yêu thích nào cả. Hãy thêm từ yêu
+                      thích bằng cách bấm vào hình trái tim ngay bên từ vựng đó
+                      nhé 😉
                     </h3>
                   )}
                 </>
@@ -87,10 +80,9 @@ function DynoDictionary({
       </div>
     </div>
   );
-} 
+}
 
-
-DynoDictionary.propTypes = {
+FavoriteDictionary.propTypes = {
   isFirstLoad: PropTypes.bool,
   isTOEIC: PropTypes.bool,
   list: PropTypes.array,
@@ -102,7 +94,7 @@ DynoDictionary.propTypes = {
   onSortTypeChange: PropTypes.func,
 };
 
-DynoDictionary.defaultProps = {
+FavoriteDictionary.defaultProps = {
   list: [],
   loading: false,
   more: true,
@@ -114,4 +106,4 @@ DynoDictionary.defaultProps = {
   onSortTypeChange: function () {},
 };
 
-export default DynoDictionary;
+export default FavoriteDictionary;

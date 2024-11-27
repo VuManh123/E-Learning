@@ -76,9 +76,6 @@ function DynoDictionaryData({ isTOEIC }) {
       // }
     } catch (error) {}
   };
-  const onChangeWord = async (word) => {
-
-  }
 
   // get total word pack
   useEffect(() => {

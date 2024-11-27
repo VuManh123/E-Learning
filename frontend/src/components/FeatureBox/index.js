@@ -23,6 +23,11 @@ FeatureBox.propTypes = {
   subTitle: PropTypes.string,
 };
 
-
+FeatureBox.defaultProps = {
+  imgUrl: '',
+  title: '',
+  to: '',
+  subTitle: '',
+};
 
 export default FeatureBox;

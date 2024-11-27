@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import useStyle from './style';
 
+
 function InformationTooltip({ title }) {
   const classes = useStyle();
+
 
   return (
     <TooltipCustom title={title} className="cur-help">

@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import LoopIcon from '@material-ui/icons/Loop';
 import ResetIcon from '@material-ui/icons/RotateLeft';
 import SaveIcon from '@material-ui/icons/Save';
-//import wordApi from 'apis/wordApi';
+//import wordApi from 'apis/wordApi'; //Importdata if necessary
 import InputCustom from 'components/UI/InputCustom';
 import SelectCustom from 'components/UI/SelectCustom';
 import TopicSelect from 'components/UI/TopicSelect';

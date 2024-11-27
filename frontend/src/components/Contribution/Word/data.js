@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setMessage } from 'redux/slices/message.slice';
 import WordContribution from './index';
 
+// Analysis world to form
 const analysisExample = (exampleStr = '', word = '') => {
   if (typeof exampleStr !== 'string' || exampleStr === '') {
     return [];

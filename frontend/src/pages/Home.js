@@ -11,6 +11,7 @@ import ipaIcon from 'assets/icons/ipa.png';
 import toeicIcon from 'assets/icons/toeic.png';
 import verbIcon from 'assets/icons/verb.png';
 import medalIcon from 'assets/icons/medal.png';
+import donateIcon from 'assets/icons/donate.png';
 import FeatureBox from 'components/FeatureBox';
 import { ROUTES } from 'constant';
 import useScrollTop from 'hooks/useScrollTop';
@@ -88,6 +89,12 @@ const FEATURE_LIST = [
       'Dyno rất mong được sự đóng góp của bạn. Bạn có thể thêm từ mới, sửa lỗi sai',
     to: ROUTES.CONTRIBUTION,
   },
+  {
+    title: 'Videos bài giảng',
+    imgUrl: donateIcon,
+    subTitle: 'Mononary cung cấp một số videos. Cùng học hiệu quả nhất nhé!',
+    to: ROUTES.FAVORITE,
+  }
 ];
 
 function HomePage() {

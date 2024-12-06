@@ -1,19 +1,26 @@
-require("dotenv").config({
-  path: "./.env",
-});
-require("rootpath")();
-const express = require("express");
-const bodyParser = require("body-parser");
-const router = require("routes/api");
-const { swaggerUIServe,swaggerUISetup } = require("kernels/api-docs");
+require('dotenv').config();
+const express = require('express')
 
 const app = express();
-app.disable("x-powered-by");
+const PORT = process.env.PORT || 3000
 
-app.use(bodyParser.json());
-app.use("/", router);
-app.use(express.json());
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT} !!`);
+});
 
-app.use("/api-docs", swaggerUIServe, swaggerUISetup);
+//  ============================= CONNECT DATABASE MONGODB ================================
+const mongoose = require('mongoose');
+const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://manhvu-2k3:manhvu123@cluster-test.yfr5c.mongodb.net/LearnGo';
 
-module.exports = app
+mongoose.Promise = global.Promise;
+
+async function connectDB() {
+  try {
+    await mongoose.connect(MONGO_URL);
+    console.log("Connected to MongoDB successfully");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
+}
+
+connectDB();

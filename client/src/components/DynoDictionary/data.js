@@ -1,5 +1,5 @@
-// import commonApi from 'apis/commonApi';
-// import wordApi from 'apis/wordApi';
+import commonService from 'services/commonService';
+import wordService from 'services/wordService';
 import WordDetailModal from 'components/UI/WordDetailModal';
 import { TOEIC_KEY } from 'constant/topics';
 import { equalArray } from 'helper';
@@ -68,12 +68,12 @@ function DynoDictionaryData({ isTOEIC }) {
         return;
       }
 
-      // const apiRes = await wordApi.getSearchWord(word);
-      // if (apiRes.status === 200) {
-      //   const { packList = [] } = apiRes.data;
-      //   setList(packList);
-      //   setMore(false);
-      // }
+      const apiRes = await wordService.getSearchWord(word);
+      if (apiRes.status === 200) {
+        const { packList = [] } = apiRes.data;
+        setList(packList);
+        setMore(false);
+      }
     } catch (error) {}
   };
 
@@ -83,11 +83,11 @@ function DynoDictionaryData({ isTOEIC }) {
 
     (async function () {
       try {
-        // const apiRes = await commonApi.getWordPackTotal(packInfo);
-        // if (apiRes.status === 200 && isSub) {
-        //   const { total = 0 } = apiRes.data;
-        //   totalPage.current = Math.ceil(total / perPage);
-        // }
+        const apiRes = await commonService.getWordPackTotal(packInfo);
+        if (apiRes.status === 200 && isSub) {
+          const { total = 0 } = apiRes.data;
+          totalPage.current = Math.ceil(total / perPage);
+        }
       } catch (error) {}
     })();
 
@@ -101,18 +101,18 @@ function DynoDictionaryData({ isTOEIC }) {
     (async function () {
       try {
         setLoading(true);
-        // const apiRes = await wordApi.getWordList(
-        //   page,
-        //   perPage,
-        //   packInfo,
-        //   sortType,
-        // );
-        // if (apiRes.status === 200 && isSub) {
-        //   const { packList = [] } = apiRes.data;
-        //   const newList = [...list, ...packList];
-        //   preSearchList.current = newList;
-        //   setList(newList);
-        // }
+        const apiRes = await wordService.getWordList(
+          page,
+          perPage,
+          packInfo,
+          sortType,
+        );
+        if (apiRes.status === 200 && isSub) {
+          const { packList = [] } = apiRes.data;
+          const newList = [...list, ...packList];
+          preSearchList.current = newList;
+          setList(newList);
+        }
       } catch (error) {
       } finally {
         if (isSub) {

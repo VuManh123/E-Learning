@@ -64,18 +64,20 @@ exports.getCheckWordExistence = async (req, res) => {
 
 exports.getWordPack = async (req, res) => {
     try {
+        console.log(req.query);
         const { page, perPage, packInfo, sortType } = req.query;
 
         const pageInt = parseInt(page),
             perPageInt = parseInt(perPage);
         const skip = (pageInt - 1) * perPageInt;
+        
 
         const packList = await getWordPack(
             JSON.parse(packInfo),
             skip,
             perPageInt,
             '-_id type word mean phonetic picture',
-            sortType === 'asc' ? '1' : sortType === 'desc' ? '-1' : null,
+            sortType === 'asc' ? 1 : sortType === 'desc' ? -1 : null,
             null,
         );
 

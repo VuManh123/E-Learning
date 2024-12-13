@@ -11,7 +11,7 @@ const perPage = 20;
 
 function DynoDictionaryData({ isTOEIC }) {
   const [page, setPage] = useState(1);
-  const [sortType, setSortType] = useState('rand');
+  const [sortType, setSortType] = useState('asc');
   const [packInfo, setPackInfo] = useState(() => ({
     type: '-1',
     level: '-1',

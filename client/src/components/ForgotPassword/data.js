@@ -1,4 +1,4 @@
-//import accountApi from 'apis/accountApi';
+import accountApi from 'services/accountService';
 import { ROUTES, UX } from 'constant';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -15,15 +15,15 @@ function ForgotPasswordData() {
   const handleSendMail = async (email) => {
     setMailSending(true);
     try {
-      // const apiRes = await accountApi.getSendVerifyCode(email);
-      // if (apiRes.status === 200) {
-      //   dispatch(
-      //     setMessage({
-      //       type: 'success',
-      //       message: 'Gửi mã thành công. Hãy kiểm tra email của bạn',
-      //     }),
-      //   );
-      // }
+      const apiRes = await accountApi.getSendVerifyCode(email);
+      if (apiRes.status === 200) {
+        dispatch(
+          setMessage({
+            type: 'success',
+            message: 'Gửi mã thành công. Hãy kiểm tra email của bạn',
+          }),
+        );
+      }
     } catch (error) {
     } finally {
       setMailSending(false);
@@ -34,24 +34,24 @@ function ForgotPasswordData() {
     setLoading(true);
     setMailSending(true);
     try {
-      // const apiRes = await accountApi.postResetPassword(
-      //   email,
-      //   password,
-      //   verifyCode,
-      // );
+      const apiRes = await accountApi.postResetPassword(
+        email,
+        password,
+        verifyCode,
+      );
 
-      // if (apiRes.status === 200) {
-      //   dispatch(
-      //     setMessage({
-      //       type: 'success',
-      //       message: 'Đổi mật khẩu thành công',
-      //       duration: UX.DELAY_TIME,
-      //     }),
-      //   );
-      //   setTimeout(() => {
-      //     history.push(ROUTES.LOGIN);
-      //   }, UX.DELAY_TIME);
-      // }
+      if (apiRes.status === 200) {
+        dispatch(
+          setMessage({
+            type: 'success',
+            message: 'Đổi mật khẩu thành công',
+            duration: UX.DELAY_TIME,
+          }),
+        );
+        setTimeout(() => {
+          history.push(ROUTES.LOGIN);
+        }, UX.DELAY_TIME);
+      }
     } catch (error) {
       const message =
         error.response?.data?.message || 'Đổi mật khẩu thất bại, thử lại !';

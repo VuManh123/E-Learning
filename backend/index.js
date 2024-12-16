@@ -10,7 +10,7 @@ const https = require('https');
 // import local file
 const { MAX } = require('./constant');
 const corsConfig = require('./configs/Cors');
-//const accountApi = require('./src/apis/account.api');
+const accountApi = require('./routes/AccountRoute');
 const wordApi = require('./routes/WordRoutes');
 // const gameApi = require('./src/apis/game.api');
 const flashcardApi = require('./routes/FlashCardRoute');
@@ -52,7 +52,7 @@ app.use(cors(corsConfig));
 
 // ================== Apis ==================
 const BASE_URL = '/apis';
-//app.use(`${BASE_URL}/account`, accountApi);
+app.use(`${BASE_URL}/account`, accountApi);
 app.use(`${BASE_URL}/word`, wordApi);
 // app.use(`${BASE_URL}/games`, gameApi);
 app.use(`${BASE_URL}/flashcard`, flashcardApi);

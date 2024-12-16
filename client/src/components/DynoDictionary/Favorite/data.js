@@ -1,4 +1,4 @@
-//import wordApi from 'apis/wordApi';
+import wordApi from 'services/wordService';
 import WordDetailModal from 'components/UI/WordDetailModal';
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -41,12 +41,12 @@ function FavoriteDictionaryData() {
         return;
       }
 
-      // const apiRes = await wordApi.getSearchWord(word);
-      // if (apiRes.status === 200) {
-      //   const { packList = [] } = apiRes.data;
-      //   setList(packList);
-      //   setMore(false);
-      // }
+      const apiRes = await wordApi.getSearchWord(word);
+      if (apiRes.status === 200) {
+        const { packList = [] } = apiRes.data;
+        setList(packList);
+        setMore(false);
+      }
     } catch (error) {}
   };
 
@@ -57,17 +57,17 @@ function FavoriteDictionaryData() {
     (async function () {
       try {
         setLoading(true);
-        // const apiRes = await wordApi.getUserFavoriteList(
-        //   page,
-        //   perPage,
-        //   sortType,
-        // );
-        // if (apiRes.status === 200 && isSub) {
-        //   const { packList = [] } = apiRes.data;
-        //   const newList = [...list, ...packList];
-        //   preSearchList.current = newList;
-        //   setList(newList);
-        // }
+        const apiRes = await wordApi.getUserFavoriteList(
+          page,
+          perPage,
+          sortType,
+        );
+        if (apiRes.status === 200 && isSub) {
+          const { packList = [] } = apiRes.data;
+          const newList = [...list, ...packList];
+          preSearchList.current = newList;
+          setList(newList);
+        }
       } catch (error) {
       } finally {
         if (isSub) {

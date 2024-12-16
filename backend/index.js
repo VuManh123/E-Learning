@@ -18,7 +18,7 @@ const commonApi = require('./routes/CommonRoute');
 // const sentenceApi = require('./src/apis/sentence.api');
 // const blogApi = require('./src/apis/blog.api');
 // const highscoreApi = require('./src/apis/highscore.api');
-// const passportConfig = require('./src/middlewares/passport.middleware');
+const passportConfig = require('./middlewares/AuthMiddleware');
 
 const app = express();
 const PORT = process.env.PORT || 3000

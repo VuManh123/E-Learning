@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-//import accountApi from 'apis/accountApi';
+import accountApi from 'services/accountService';
 
 export const getUserInfo = createAsyncThunk(
   'userInfo/getUserInfo',
   async () => {
     try {
-      // const apiRes = await accountApi.getUserInfo();
-      // if (apiRes && apiRes.status === 200) {
-      //   return apiRes.data.user;
-      // }
+      const apiRes = await accountApi.getUserInfo();
+      if (apiRes && apiRes.status === 200) {
+        return apiRes.data.user;
+      }
       return {};
     } catch (error) {
       throw error;

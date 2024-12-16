@@ -1,5 +1,5 @@
 const { ACCOUNT_TYPES, MAX } = require('../constant');
-const { hashPassword } = require('../helper');
+const { hashPassword } = require('../helper/Auth');
 const AccountModel = require('../models/Account');
 const UserModel = require('../models/User');
 const { uploadImage } = require('./CommonService');

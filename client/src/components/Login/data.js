@@ -1,4 +1,4 @@
-//import accountApi from 'apis/accountApi';
+import accountApi from 'services/accountService';
 import { UX } from 'constant';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -14,16 +14,16 @@ function LoginData() {
       setLoading(true);
       const { email, password } = account;
 
-      // const apiRes = await accountApi.postLogin(email.toLowerCase(), password);
-      // if (apiRes && apiRes.status === 200) {
-      //   dispatch(
-      //     setMessage({ message: 'Đăng nhập thành công', type: 'success' }),
-      //   );
+      const apiRes = await accountApi.postLogin(email.toLowerCase(), password);
+      if (apiRes && apiRes.status === 200) {
+        dispatch(
+          setMessage({ message: 'Đăng nhập thành công', type: 'success' }),
+        );
 
-      //   setTimeout(() => {
-      //     window.location.href = '/';
-      //   }, UX.DELAY_TIME);
-      // }
+        setTimeout(() => {
+          window.location.href = '/';
+        }, UX.DELAY_TIME);
+      }
     } catch (error) {
       const message = error.response?.data?.message || 'Thất bại, thử lại !';
       dispatch(setMessage({ message, type: 'error' }));

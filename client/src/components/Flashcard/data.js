@@ -1,5 +1,5 @@
-//import commonApi from 'apis/commonApi';
-//import flashcardApi from 'apis/flashcardApi';
+import commonService from 'services/commonService';
+import flashcardApi from 'services/flashCardService';
 import { equalArray } from 'helper';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -33,9 +33,8 @@ function FlashcardData() {
 
     (async function getTotalWordPack() {
       try {
-        // const apiRes = await commonApi.getWordPackTotal(pageInfo.packInfo);
-
-        const apiRes = 200;
+        const apiRes = await commonService.getWordPackTotal(pageInfo.packInfo);
+        //const apiRes = 200;
         if (apiRes.status === 200 && isSubscribe) {
           const { total = 0 } = apiRes.data;
           if (total === 0) {
@@ -64,17 +63,17 @@ function FlashcardData() {
 
     async function getFlashcardList() {
       try {
-        // const apiRes = await flashcardApi.getWordPack(
-        //   pageInfo.page,
-        //   perPage,
-        //   pageInfo.packInfo,
-        // );
+        const apiRes = await flashcardApi.getWordPack(
+          pageInfo.page,
+          perPage,
+          pageInfo.packInfo,
+        );
 
-        // if (apiRes.status === 200 && isSubscribe) {
-        //   const { packList = [] } = apiRes.data;
-        //   setCurrentList(packList);
-        //   list.current = [...list.current, ...packList];
-        // }
+        if (apiRes.status === 200 && isSubscribe) {
+          const { packList = [] } = apiRes.data;
+          setCurrentList(packList);
+          list.current = [...list.current, ...packList];
+        }
       } catch (error) {}
     }
 

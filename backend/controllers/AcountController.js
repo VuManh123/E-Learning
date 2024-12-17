@@ -200,8 +200,7 @@ exports.putToggleFavorite = async (req, res) => {
 
       if (isLimited) {
         return res.status(409).json({
-          message:
-            'Số từ đã vượt quá số lượng tối đa của danh sách yêu thích. Hãy nâng cấp nó.',
+          message: 'Số từ đã vượt quá số lượng tối đa của danh sách yêu thích.',
         });
       }
 
@@ -220,13 +219,11 @@ exports.putToggleFavorite = async (req, res) => {
 
     const updateStatus = await updateFavoriteList(word, username, isAdd);
 
-    if (updateStatus && updateStatus.ok && updateStatus.nModified) {
+    if (updateStatus && (updateStatus.modifiedCount || updateStatus.matchedCount)) {
       return res.status(200).json({ message: 'success' });
     } else {
       return res.status(409).json({ message: 'failed' });
     }
-
-    console.log(updateStatus);
   } catch (error) {
     console.error('PUT TOGGLE FAVORITE ERROR: ', error);
     return res.status(503).json({ message: 'Lỗi dịch vụ, thử lại sau' });

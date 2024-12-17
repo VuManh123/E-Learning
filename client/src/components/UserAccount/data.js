@@ -1,4 +1,4 @@
-//import accountApi from 'apis/accountApi';
+import accountApi from 'services/accountService';
 import { formatDate } from 'helper';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -15,12 +15,12 @@ function UserAccountData() {
 
     (async function () {
       try {
-        // const apiRes = await accountApi.getUserProfile();
+        const apiRes = await accountApi.getUserProfile();
 
-        // if (apiRes.status === 200 && isSub) {
-        //   const { email, createdDate } = apiRes.data;
-        //   setUserInfo({ email, createdDate: formatDate(createdDate) });
-        // }
+        if (apiRes.status === 200 && isSub) {
+          const { email, createdDate } = apiRes.data;
+          setUserInfo({ email, createdDate: formatDate(createdDate) });
+        }
       } catch (error) {}
     })();
 
@@ -29,17 +29,17 @@ function UserAccountData() {
 
   const handleUploadAvt = async (src) => {
     try {
-      // const apiRes = await accountApi.putUpdateAvt(src);
-      // if (apiRes.status === 200) {
-      //   dispatch(
-      //     setMessage({
-      //       type: 'success',
-      //       message: 'Cập nhật ảnh đại diện thành công',
-      //     }),
-      //   );
+      const apiRes = await accountApi.putUpdateAvt(src);
+      if (apiRes.status === 200) {
+        dispatch(
+          setMessage({
+            type: 'success',
+            message: 'Cập nhật ảnh đại diện thành công',
+          }),
+        );
 
-      //   dispatch(setUserAvt(apiRes.data.newSrc));
-      // }
+        dispatch(setUserAvt(apiRes.data.newSrc));
+      }
     } catch (error) {
       dispatch(
         setMessage({
@@ -52,20 +52,20 @@ function UserAccountData() {
 
   const handleUpdateProfile = async (name, username) => {
     try {
-      // const apiRes = await accountApi.putUpdateProfile(name, username);
-      // if (apiRes.status === 200) {
-      //   dispatch(
-      //     setMessage({
-      //       type: 'success',
-      //       message: 'Cập nhật thông tin thành công',
-      //       duration: 500,
-      //     }),
-      //   );
+      const apiRes = await accountApi.putUpdateProfile(name, username);
+      if (apiRes.status === 200) {
+        dispatch(
+          setMessage({
+            type: 'success',
+            message: 'Cập nhật thông tin thành công',
+            duration: 500,
+          }),
+        );
 
-      //   setTimeout(() => {
-      //     location.reload();
-      //   }, 750);
-      // }
+        setTimeout(() => {
+          location.reload();
+        }, 750);
+      }
     } catch (error) {
       const message =
         error.response?.data?.message ||

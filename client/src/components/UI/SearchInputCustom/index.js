@@ -2,7 +2,7 @@ import { Grow } from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-//import wordApi from 'apis/wordApi';
+import wordApi from 'services/wordService';
 import { MAX } from 'constant';
 import NAV_SEARCH_DATA from 'constant/nav-search-data';
 import { debounce } from 'helper';
@@ -33,8 +33,8 @@ function SearchInputCustom({ placeholder, showInput, prefixIcon }) {
       return;
     }
 
-    // const apiRes = await wordApi.getWordDetails(word);
-    // setWordDetails(apiRes?.data);
+    const apiRes = await wordApi.getWordDetails(word);
+    setWordDetails(apiRes?.data);
   };
 
   const handleSearch = (e) => {
@@ -51,16 +51,16 @@ function SearchInputCustom({ placeholder, showInput, prefixIcon }) {
               `${i.title} ${i.searchKey}`.indexOf(word.toLowerCase()) !== -1,
           ).map((i) => ({ title: i.title, to: i.to })) || [];
 
-        // const apiRes = await wordApi.getSearchWord(word, true);
-        // if (apiRes.data?.packList) {
-        //   navSearchList = [
-        //     ...navSearchList,
-        //     ...apiRes.data.packList.map((i) => ({ title: i.word, to: null })),
-        //   ];
-        // }
+        const apiRes = await wordApi.getSearchWord(word, true);
+        if (apiRes.data?.packList) {
+          navSearchList = [
+            ...navSearchList,
+            ...apiRes.data.packList.map((i) => ({ title: i.word, to: null })),
+          ];
+        }
 
-        // setResultList(navSearchList?.slice(0, 20) || []);
-        // setAnchorEl(searchBarRef.current);
+        setResultList(navSearchList?.slice(0, 20) || []);
+        setAnchorEl(searchBarRef.current);
       },
       350,
     );

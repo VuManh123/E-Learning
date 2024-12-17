@@ -24,8 +24,8 @@ export const DEFAULTS = {
 };
 
 export const LINKS = {
-  FB: 'https://fb.com/TuanNguyen250400',
-  WEBSITE: 'https://dynonguyen.com',
+  FB: 'https://www.facebook.com/vu.manh.523119/',
+  WEBSITE: 'https://learngo.com',
 };
 
 export const MAX = {

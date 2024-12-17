@@ -29,3 +29,24 @@ exports.getWordPackCWG = async (req, res, next) => {
     return res.status(503).json({ message: 'Lỗi dịch vụ, thử lại sau' });
   }
 };
+
+// ======== WORD MATCH GAME ========
+exports.getWordPackWMG = async (req, res, next) => {
+    try {
+      let { nQuestion = 50, ...packInfo } = req.query;
+      nQuestion = parseInt(nQuestion);
+      if (nQuestion > MAX.LEN_WORD_PACK) nQuestion = MAX.LEN_WORD_PACK;
+  
+      const seedList = await getWordPack(packInfo, 0, 1500, '-_id word mean');
+      if (seedList) {
+        return res.status(200).json({
+          wordPack: seedList.sort((_) => Math.random() - 0.5).slice(0, nQuestion),
+        });
+      }
+  
+      return res.status(200).json({ wordPack: [] });
+    } catch (error) {
+      console.error('GET WORD PACK WMG ERROR: ', error);
+      return res.status(503).json({ message: 'Lỗi dịch vụ, thử lại sau' });
+    }
+  };

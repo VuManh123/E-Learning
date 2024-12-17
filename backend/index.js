@@ -15,7 +15,7 @@ const wordApi = require('./routes/WordRoutes');
 // const gameApi = require('./src/apis/game.api');
 const flashcardApi = require('./routes/FlashCardRoute');
 const commonApi = require('./routes/CommonRoute');
-// const sentenceApi = require('./src/apis/sentence.api');
+const sentenceApi = require('./routes/SentenceRoute');
 // const blogApi = require('./src/apis/blog.api');
 // const highscoreApi = require('./src/apis/highscore.api');
 const passportConfig = require('./middlewares/AuthMiddleware');
@@ -57,7 +57,7 @@ app.use(`${BASE_URL}/word`, wordApi);
 // app.use(`${BASE_URL}/games`, gameApi);
 app.use(`${BASE_URL}/flashcard`, flashcardApi);
 app.use(`${BASE_URL}/common`, commonApi);
-// app.use(`${BASE_URL}/sentence`, sentenceApi);
+app.use(`${BASE_URL}/sentence`, sentenceApi);
 // app.use(`${BASE_URL}/blog`, blogApi);
 // app.use(
 //   `${BASE_URL}/highscore`,

@@ -1,4 +1,4 @@
-//import sentenceApi from 'apis/sentenceApi';
+import sentenceApi from 'services/sentenceService';
 import { equalArray } from 'helper';
 import React, { useEffect, useRef, useState } from 'react';
 import CommunicationPhrase from '.';
@@ -34,51 +34,51 @@ function CommunicationPhraseData() {
     totalPage.current = 0;
   };
 
-  // // get total sentence
-  // useEffect(() => {
-  //   let isSub = true;
+  // get total sentence
+  useEffect(() => {
+    let isSub = true;
 
-  //   (async function () {
-  //     try {
-  //       const apiRes = await sentenceApi.getTotalSentences(topicList);
+    (async function () {
+      try {
+        const apiRes = await sentenceApi.getTotalSentences(topicList);
 
-  //       if (apiRes.status === 200 && isSub) {
-  //         const { total = 0 } = apiRes.data;
-  //         totalPage.current = Math.ceil(total / perPage);
-  //       }
-  //     } catch (error) {}
-  //   })();
+        if (apiRes.status === 200 && isSub) {
+          const { total = 0 } = apiRes.data;
+          totalPage.current = Math.ceil(total / perPage);
+        }
+      } catch (error) {}
+    })();
 
-  //   return () => (isSub = false);
-  // }, [topicList]);
+    return () => (isSub = false);
+  }, [topicList]);
 
-  // // get sentence list
-  // useEffect(() => {
-  //   let isSub = true;
+  // get sentence list
+  useEffect(() => {
+    let isSub = true;
 
-  //   (async function () {
-  //     try {
-  //       setLoading(true);
-  //       const apiRes = await sentenceApi.getSentenceList(
-  //         page,
-  //         perPage,
-  //         topicList,
-  //       );
-  //       if (apiRes.status === 200 && isSub) {
-  //         const { sentenceList = [] } = apiRes.data;
-  //         setList([...list, ...sentenceList]);
-  //       }
-  //     } catch (error) {
-  //     } finally {
-  //       if (isSub) {
-  //         setLoading(false);
-  //         isFirstLoad && setIsFirstLoad(false);
-  //       }
-  //     }
-  //   })();
+    (async function () {
+      try {
+        setLoading(true);
+        const apiRes = await sentenceApi.getSentenceList(
+          page,
+          perPage,
+          topicList,
+        );
+        if (apiRes.status === 200 && isSub) {
+          const { sentenceList = [] } = apiRes.data;
+          setList([...list, ...sentenceList]);
+        }
+      } catch (error) {
+      } finally {
+        if (isSub) {
+          setLoading(false);
+          isFirstLoad && setIsFirstLoad(false);
+        }
+      }
+    })();
 
-  //   return () => (isSub = false);
-  // }, [page, topicList]);
+    return () => (isSub = false);
+  }, [page, topicList]);
 
   return (
     <CommunicationPhrase

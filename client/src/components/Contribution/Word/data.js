@@ -1,4 +1,4 @@
-//import wordApi from 'apis/wordApi';
+import wordApi from 'services/wordService';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setMessage } from 'redux/slices/message.slice';
@@ -58,19 +58,19 @@ function WordContributionData() {
         phonetic: phonetic.replaceAll('/', ''),
       };
 
-      // const apiRes = await wordApi.postContributeWord(dataSend);
+      const apiRes = await wordApi.postContributeWord(dataSend);
 
-      // if (apiRes.status === 200) {
-      //   dispatch(
-      //     setMessage({
-      //       type: 'success',
-      //       message:
-      //         'Thêm thành công, đang chờ xét duyệt. Cảm ơn sự đóng góp của bạn ❤',
-      //       duration: 5000,
-      //     }),
-      //   );
-      //   setSubmitting(false);
-      // }
+      if (apiRes.status === 200) {
+        dispatch(
+          setMessage({
+            type: 'success',
+            message:
+              'Thêm thành công, đang chờ xét duyệt. Cảm ơn sự đóng góp của bạn ❤',
+            duration: 5000,
+          }),
+        );
+        setSubmitting(false);
+      }
     } catch (error) {
       const message =
         error.response?.data?.message ||

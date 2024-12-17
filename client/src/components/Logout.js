@@ -1,4 +1,4 @@
-//import accountApi from 'apis/accountApi';
+import accountApi from 'services/accountService';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -18,13 +18,13 @@ function Logout() {
 
     (async function () {
       try {
-        // const apiRes = await accountApi.postLogout();
-        // if (apiRes.status === 200) {
-        //   dispatch(
-        //     setMessage({ type: 'success', message: 'Đăng xuất thành công' }),
-        //   );
-        //   window.location.href = history.location.pathname;
-        // }
+        const apiRes = await accountApi.postLogout();
+        if (apiRes.status === 200) {
+          dispatch(
+            setMessage({ type: 'success', message: 'Đăng xuất thành công' }),
+          );
+          window.location.href = history.location.pathname;
+        }
       } catch (error) {
         dispatch(
           setMessage({ type: 'error', message: 'Đăng xuất thất bại, thử lại' }),

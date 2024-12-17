@@ -1,6 +1,6 @@
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import UnFavoriteIcon from '@material-ui/icons/FavoriteBorder';
-//import accountApi from 'apis/accountApi';
+import accountApi from 'services/accountService';
 import { ROUTES } from 'constant';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -22,14 +22,21 @@ function WordFavorite({ word }) {
 
   const handleClick = async () => {
     try {
-      // const apiRes = await accountApi.putToggleWordFavorite(
-      //   username,
-      //   word,
-      //   !isFavorite,
-      // );
-      // if (apiRes.status === 200) {
-      //   dispatch(setAddFavorites({ word, isAdd: !isFavorite }));
-      // }
+      //console.log(`Username: ${username}, word: ${word}, isFavorite: ${!isFavorite}`);
+      const apiRes = await accountApi.putToggleWordFavorite(
+        username,
+        word,
+        !isFavorite,
+      );
+      if (apiRes.status === 200) {
+        dispatch(setAddFavorites({ word, isAdd: !isFavorite }));
+        const message = !isFavorite
+          ? 'Đã thêm vào mục yêu thích!'
+          : 'Đã xóa khỏi mục yêu thích!';
+        dispatch(setMessage({ type: 'success', message }));
+      } else {
+        throw new Error('Cập nhật danh sách yêu thích thất bại');
+      }
     } catch (error) {
       const message = error.response?.data?.message || 'Thất bại, thử lại !';
       dispatch(setMessage({ type: 'error', message }));

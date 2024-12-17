@@ -51,12 +51,9 @@ exports.createUser = async (accountId, username, name, avt = '') => {
 
 exports.isExistWordInFavorites = async (word, username) => {
   try {
-    const regex = new RegExp(word, 'i');
     const isExist = await UserModel.exists({
       username,
-      favoriteList: {
-        $in: regex,
-      },
+      favoriteList: { $elemMatch: { $regex: word, $options: 'i' } }, // $regex cho case-insensitive
     });
 
     return isExist;
@@ -89,13 +86,13 @@ exports.updateFavoriteList = async (word, username, isAdd = false) => {
     if (isAdd) {
       return await UserModel.updateOne(
         { username },
-        { $push: { favoriteList: word } },
+        { $addToSet: { favoriteList: word } }, // $addToSet tránh trùng lặp
       );
     }
 
     return await UserModel.updateOne(
       { username },
-      { $pull: { favoriteList: { $in: word } } },
+      { $pull: { favoriteList: word } }, // Trực tiếp so khớp giá trị
     );
   } catch (error) {
     throw error;

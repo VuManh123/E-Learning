@@ -1,6 +1,6 @@
 const { MAX } = require('../constant');
-const { randomWordQuestionPack } = require('../helper/game.helper');
-const { getWordPack } = require('../services/common.service');
+const { randomWordQuestionPack } = require('../helper/Game');
+const { getWordPack } = require('../services/CommonService');
 
 // ======== CORRECT WORD GAME ========
 exports.getWordPackCWG = async (req, res, next) => {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const blogSchema = new Schema({
+const grammarSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -21,6 +21,6 @@ const blogSchema = new Schema({
   },
 });
 
-const BlogModel = mongoose.model('Blog', blogSchema, 'blogs');
+const GrammarModel = mongoose.model('Grammar', grammarSchema, 'grammars');
 
-module.exports = BlogModel;
+module.exports = GrammarModel;

@@ -1,4 +1,4 @@
-//import blogApi from 'apis/blogApi';
+import grammarApi from 'services/grammarService';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setMessage } from 'redux/slices/message.slice';
@@ -14,12 +14,12 @@ function GrammarData() {
 
     (async function () {
       try {
-        // const apiRes = await blogApi.getBlogList();
-        // if (apiRes.status === 200 && isSub) {
-        //   const { blogList = [] } = apiRes.data;
-        //   setLoading(false);
-        //   setList(blogList);
-        // }
+        const apiRes = await grammarApi.getGrammarList();
+        if (apiRes.status === 200 && isSub) {
+          const { grammarList = [] } = apiRes.data;
+          setLoading(false);
+          setList(grammarList);
+        }
       } catch (error) {
         const message =
           error.response?.data?.message || 'Lấy tài liệu thất bại, thử lại !';

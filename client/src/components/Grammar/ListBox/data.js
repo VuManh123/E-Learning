@@ -1,4 +1,4 @@
-//import blogApi from 'apis/blogApi';
+import grammarApi from 'services/grammarService';
 import React, { useState } from 'react';
 import GrammarListBox from '.';
 
@@ -10,10 +10,10 @@ function GrammarListBoxData(props) {
       if (!Boolean(_id)) {
         return;
       }
-      // const apiRes = await blogApi.getBlogHtml(_id);
-      // if (apiRes.status === 200) {
-      //   setBlogHtml(apiRes.data?.blogHtml);
-      // }
+      const apiRes = await grammarApi.getGrammarHtml(_id);
+      if (apiRes.status === 200) {
+        setBlogHtml(apiRes.data?.grammarHtml);
+      }
     } catch (error) {}
   };
 

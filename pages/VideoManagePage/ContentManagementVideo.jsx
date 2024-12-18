@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Box, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const initialRows = [
@@ -64,7 +64,7 @@ function ContentManagementVideo() {
   const navigate = useNavigate();
 
   const handleCreate = () => {
-    navigate("/addw");
+    navigate("/addv");
   };
 
   return (

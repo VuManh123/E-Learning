@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Box, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const initialRows = [
@@ -64,13 +64,13 @@ function ContentManagementS() {
   const navigate = useNavigate();
 
   const handleCreate = () => {
-    navigate("/addw");
+    navigate("/addc");
   };
 
   return (
     <Box sx={{ height: 500, width: '100%', mt: 4 }}>
       <Typography variant="h5" sx={{ mb: 2 }}>Quản Lý Câu</Typography>
-      <Button variant="contained" color="primary" onClick={handleCreate} sx={{ mb: 2 }}>Thêm Nội Dung</Button>
+      <Button variant="contained" color="primary" onClick={handleCreate}>Thêm Nội Dung</Button>
       <DataGrid rows={rows} columns={columns} pageSize={5} />
 
       {/* Dialog for Add/Edit */}

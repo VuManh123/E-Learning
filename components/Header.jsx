@@ -8,23 +8,13 @@ function Header() {
   const handleLogout = () => {
     // Thêm logic đăng xuất (xóa token, chuyển trang)
     console.log("User logged out");
-    navigate('/');
+    navigate('/homepage');
   };
 
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Admin Dashboard
-        </Typography>
-
-        <Box>
           <Button color="inherit" onClick={handleLogout}>
-            Đăng xuất
+            Quay lại
           </Button>
-        </Box>
-      </Toolbar>
-    </AppBar>
   );
 }
 

@@ -1,7 +1,8 @@
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import React, { useState } from 'react';
-import HeaderHP from '../components/HeaderHP';
+import Navbar from '../Navbar';
+import Sidebar from '../Sidebar';
 
 const initialUsers = [
   { id: 1, username: 'user1', email: 'user1@example.com', status: 'Active' },
@@ -63,50 +64,55 @@ function UserPage() {
 
   return (
     <div>
-      <HeaderHP/>
-      <Box sx={{ height: 500, width: '100%', mt: 4 }}>
-        <Typography variant="h5" sx={{ mb: 2 }}>
-          Quản Lý Người Dùng
-        </Typography>
-        <DataGrid rows={users} columns={columns} pageSize={5} />
+      <div className='navbar'><Navbar/></div>
+      <div className='sbmc' style={{display: 'flex'}}>
+        <div><Sidebar/></div>
+        <div>
+        <Box sx={{ height: 500, width: '100%', mt: 4 }}>
+          <Typography variant="h5" sx={{ mb: 2 }}>
+            Quản Lý Người Dùng
+          </Typography>
+          <DataGrid rows={users} columns={columns} pageSize={5} />
 
-        {/* Popup xem chi tiết thông tin */}
-        <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>Thông Tin Chi Tiết</DialogTitle>
-          <DialogContent>
-            {selectedUser && (
-              <Box>
-                <TextField
-                  label="Tên Đăng Nhập"
-                  value={selectedUser.username}
-                  fullWidth
-                  margin="normal"
-                  InputProps={{ readOnly: true }}
-                />
-                <TextField
-                  label="Email"
-                  value={selectedUser.email}
-                  fullWidth
-                  margin="normal"
-                  InputProps={{ readOnly: true }}
-                />
-                <TextField
-                  label="Trạng Thái"
-                  value={selectedUser.status}
-                  fullWidth
-                  margin="normal"
-                  InputProps={{ readOnly: true }}
-                />
-              </Box>
-            )}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Đóng
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </Box>
+          {/* Popup xem chi tiết thông tin */}
+          <Dialog open={open} onClose={handleClose}>
+            <DialogTitle>Thông Tin Chi Tiết</DialogTitle>
+            <DialogContent>
+              {selectedUser && (
+                <Box>
+                  <TextField
+                    label="Tên Đăng Nhập"
+                    value={selectedUser.username}
+                    fullWidth
+                    margin="normal"
+                    InputProps={{ readOnly: true }}
+                  />
+                  <TextField
+                    label="Email"
+                    value={selectedUser.email}
+                    fullWidth
+                    margin="normal"
+                    InputProps={{ readOnly: true }}
+                  />
+                  <TextField
+                    label="Trạng Thái"
+                    value={selectedUser.status}
+                    fullWidth
+                    margin="normal"
+                    InputProps={{ readOnly: true }}
+                  />
+                </Box>
+              )}
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Đóng
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </Box>
+        </div>
+      </div>
     </div>
   );
 }

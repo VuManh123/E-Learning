@@ -101,3 +101,11 @@ textarea {
   justify-content: center;
   align-items: center;
 }
+
+.navbar {
+  width: 100%;
+}
+
+.sbmc {
+  display: flex;
+}

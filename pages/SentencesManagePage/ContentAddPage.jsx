@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import BasicCheckbox from '../../components/BasicCheckbox';
-import HeaderHP from '../../components/HeaderHP';
 import MultiSelector from '../../components/MultiSelector';
+import Navbar from '../Navbar';
+import Sidebar from '../Sidebar';
 
 function ContentAddPage() {
     const [word, setWord] = useState('');
@@ -39,49 +40,52 @@ function ContentAddPage() {
     };
 
     return (
-        <>
-        <HeaderHP/>
-        <div className="container">
-            <h1>Tạo Câu Mới</h1>
-            <form onSubmit={handleSubmit} className="form">
-                <div className="form-group">
-                    <label>NỘI DUNG CÂU BẰNG TIẾNG ANH</label>
-                    <textarea 
-                        type="text" 
-                        value={word} 
-                        onChange={(e) => setWord(e.target.value)} 
-                        required 
-                    />
+        <div>
+            <div className='navbar'><Navbar/></div>
+            <div className='sbmc'>
+                <div><Sidebar/></div>
+                <div style={{flexGrow: "1", maxWidth: "75%", maxHeight: "30%"}}>
+                    <h1>Tạo Câu Mới</h1>
+                    <form onSubmit={handleSubmit} className="form">
+                        <div className="form-group">
+                            <label>NỘI DUNG CÂU BẰNG TIẾNG ANH</label>
+                            <textarea 
+                                type="text" 
+                                value={word} 
+                                onChange={(e) => setWord(e.target.value)} 
+                                required 
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>NỘI DUNG CÂU BẰNG TIẾNG VIỆT</label>
+                            <textarea
+                                type="text" 
+                                value={meaning} 
+                                onChange={(e) => setMeaning(e.target.value)} 
+                                required 
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>CHỦ ĐỀ LIÊN QUAN</label>
+                            <MultiSelector/>
+                        </div>
+                        <div className="form-group">
+                            <label>Ghi chú</label>
+                            <textarea 
+                                value={exampleSentence} 
+                                onChange={(e) => setExampleSentence(e.target.value)} 
+                                required
+                            ></textarea>
+                        </div>
+                        <div className="form-group">
+                            <label>KIỂM TRA</label>
+                            <BasicCheckbox/>
+                        </div>
+                        <button type="submit" className="btn">Add Vocabulary</button>
+                    </form>
                 </div>
-                <div className="form-group">
-                    <label>NỘI DUNG CÂU BẰNG TIẾNG VIỆT</label>
-                    <textarea
-                        type="text" 
-                        value={meaning} 
-                        onChange={(e) => setMeaning(e.target.value)} 
-                        required 
-                    />
-                </div>
-                <div className="form-group">
-                    <label>CHỦ ĐỀ LIÊN QUAN</label>
-                    <MultiSelector/>
-                </div>
-                <div className="form-group">
-                    <label>Ghi chú</label>
-                    <textarea 
-                        value={exampleSentence} 
-                        onChange={(e) => setExampleSentence(e.target.value)} 
-                        required
-                    ></textarea>
-                </div>
-                <div className="form-group">
-                    <label>KIỂM TRA</label>
-                    <BasicCheckbox/>
-                </div>
-                <button type="submit" className="btn">Add Vocabulary</button>
-            </form>
+            </div>
         </div>
-        </>
     );
 };
 

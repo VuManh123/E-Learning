@@ -4,7 +4,7 @@ import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage.jsx';
 import ContentAddPage from '../pages/SentencesManagePage/ContentAddPage.jsx';
 import ContentPageSentences from '../pages/SentencesManagePage/ContentPageSentences.jsx';
-import UserPage from '../pages/UserPage.jsx';
+import UserPage from '../pages/UserManagePage/UserPage.jsx';
 import ContentPageVideo from '../pages/VideoManagePage/ContentPageVideo.jsx';
 import VideoAddPage from '../pages/VideoManagePage/VideoAddPage.jsx';
 import ContentPage from '../pages/WordManagePage/ContentPage.jsx';

@@ -6,8 +6,11 @@ function HomePage() {
   const navigate = useNavigate()
   return (
     <div style={{}}>
-    <Navbar/>
-    <Sidebar/>
+      <div style={{width: "100%"}}><Navbar/></div>
+      <div style={{display: 'flex'}}>
+        <div><Sidebar/></div>
+        <div>HomePage</div>
+      </div>
     </div>
   );
 }

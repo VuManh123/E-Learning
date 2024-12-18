@@ -15,6 +15,8 @@ exports.getWordPackCWG = async (req, res, next) => {
       0,
       1500,
       '-_id word mean phonetic synonyms',
+      sortType = 1,
+      null,
     );
 
     const packLen = packages.length > nQuestion ? nQuestion : packages.length;
@@ -37,7 +39,14 @@ exports.getWordPackWMG = async (req, res, next) => {
       nQuestion = parseInt(nQuestion);
       if (nQuestion > MAX.LEN_WORD_PACK) nQuestion = MAX.LEN_WORD_PACK;
   
-      const seedList = await getWordPack(packInfo, 0, 1500, '-_id word mean');
+      const seedList = await getWordPack(
+        packInfo,
+        0, 
+        1500, 
+        '-_id word mean',
+        sortType = 1,
+        null
+      );
       if (seedList) {
         return res.status(200).json({
           wordPack: seedList.sort((_) => Math.random() - 0.5).slice(0, nQuestion),
@@ -60,6 +69,8 @@ exports.getWordPackFS = async (req, res, next) => {
         0,
         1500,
         '-_id word picture',
+        sortType = 1,
+        null,
       );
   
       const nQuestion = 100;

@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-// import third-party
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const morgan = require('morgan');

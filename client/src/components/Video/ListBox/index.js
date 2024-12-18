@@ -65,7 +65,18 @@ function VideoListBox({
 
       <Collapse in={showBlog}>
         <div className="w-100 h-100 position-rel">
-          <iframe className={classes.iframe} id={_id}></iframe>
+          {blogHtml ? (
+            <iframe
+              className={classes.iframe}
+              src={blogHtml}
+              title={title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <Skeleton animation="wave" className="w-100 h-100" />
+          )}
 
           <ArrowUpIcon className={classes.arrowIcon} onClick={onToggleBlog} />
         </div>

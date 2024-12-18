@@ -14,7 +14,7 @@ const videoSchema = new Schema({
     maxLength: 300,
     trim: true,
   },
-  link: {
+  html: {
     type: String,
     required: true,
     trim: true,

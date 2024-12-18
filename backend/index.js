@@ -12,12 +12,12 @@ const { MAX } = require('./constant');
 const corsConfig = require('./configs/Cors');
 const accountApi = require('./routes/AccountRoute');
 const wordApi = require('./routes/WordRoutes');
-//const gameApi = require('./routes/GrammarRoute');
+const gameApi = require('./routes/GameRoute');
 const flashcardApi = require('./routes/FlashCardRoute');
 const commonApi = require('./routes/CommonRoute');
 const sentenceApi = require('./routes/SentenceRoute');
 const grammarApi = require('./routes/GrammarRoute');
-// const highscoreApi = require('./src/apis/highscore.api');
+const highscoreApi = require('./routes/HighScoreRoute');
 const passportConfig = require('./middlewares/AuthMiddleware');
 
 const app = express();
@@ -54,14 +54,14 @@ app.use(cors(corsConfig));
 const BASE_URL = '/apis';
 app.use(`${BASE_URL}/account`, accountApi);
 app.use(`${BASE_URL}/word`, wordApi);
-// app.use(`${BASE_URL}/games`, gameApi);
+app.use(`${BASE_URL}/games`, gameApi);
 app.use(`${BASE_URL}/flashcard`, flashcardApi);
 app.use(`${BASE_URL}/common`, commonApi);
 app.use(`${BASE_URL}/sentence`, sentenceApi);
 app.use(`${BASE_URL}/grammar`, grammarApi);
-// app.use(
-//   `${BASE_URL}/highscore`,
-//   passportConfig.jwtAuthentication,
-//   highscoreApi,
-// );
+app.use(
+  `${BASE_URL}/highscore`,
+  passportConfig.jwtAuthentication,
+  highscoreApi,
+);
 

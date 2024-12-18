@@ -1,4 +1,4 @@
-//import highscoreApi from 'apis/highscoreApi';
+import highscoreApi from 'services/highScoreService';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import LeaderBoard from '.';
@@ -12,12 +12,12 @@ function LeaderBoardData({ color, title, nameId, unit, tooltip }) {
 
     (async function () {
       try {
-        // const apiRes = await highscoreApi.getLeaderboard(nameId);
-        // if (apiRes.status === 200) {
-        //   const { list = [] } = apiRes.data;
-        //   setLoading(false);
-        //   setList(list);
-        // }
+        const apiRes = await highscoreApi.getLeaderboard(nameId);
+        if (apiRes.status === 200) {
+          const { list = [] } = apiRes.data;
+          setLoading(false);
+          setList(list);
+        }
       } catch (error) {}
     })();
 

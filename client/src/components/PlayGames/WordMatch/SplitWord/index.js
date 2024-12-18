@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import HelpIcon from '@material-ui/icons/LiveHelp';
-//import wordApi from 'apis/wordApi';
+import wordService from 'services/wordService';
 import Speaker from 'components/UI/Speaker';
 import WordDetailModal from 'components/UI/WordDetailModal';
 import PropTypes from 'prop-types';
@@ -164,10 +164,10 @@ function SplitWord({ word, mean, onCorrect, onWrong, resetFlag }) {
     if (modal.show && modal.loading) {
       (async function () {
         try {
-          // const apiRes = await wordApi.getWordDetails(word);
-          // if (apiRes.status === 200 && isSub) {
-          //   setModal({ show: true, loading: false, data: { ...apiRes.data } });
-          // }
+          const apiRes = await wordService.getWordDetails(word);
+          if (apiRes.status === 200 && isSub) {
+            setModal({ show: true, loading: false, data: { ...apiRes.data } });
+          }
         } catch (error) {
           isSub && setModal({ show: false, loading: false, data: null });
         }

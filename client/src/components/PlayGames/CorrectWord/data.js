@@ -1,6 +1,6 @@
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PlayIcon from '@material-ui/icons/PlayCircleFilledWhite';
-//import gameApi from 'apis/gameApi';
+import gameApi from 'services/gameService';
 import GlobalLoading from 'components/UI/GlobalLoading';
 import InputCustom from 'components/UI/InputCustom';
 import React, { useRef, useState } from 'react';
@@ -29,32 +29,32 @@ function CorrectWordData() {
           ? 100
           : nQuestion.current;
 
-      // const apiRes = await gameApi.getWordPackCWG(
-      //   type,
-      //   level,
-      //   specialty,
-      //   topics,
-      //   n,
-      // );
-      // if (apiRes.status === 200) {
-      //   const { wordPack = [] } = apiRes.data;
-      //   if (wordPack.length === 0) {
-      //     dispatch(
-      //       setMessage({
-      //         type: 'warning',
-      //         message:
-      //           'Rất xin lỗi, gói từ vựng hiện tại không đủ. Vui lòng thử lại sao',
-      //         duration: 3000,
-      //       }),
-      //     );
-      //     setState(0);
-      //     return;
-      //   }
+      const apiRes = await gameApi.getWordPackCWG(
+        type,
+        level,
+        specialty,
+        topics,
+        n,
+      );
+      if (apiRes.status === 200) {
+        const { wordPack = [] } = apiRes.data;
+        if (wordPack.length === 0) {
+          dispatch(
+            setMessage({
+              type: 'warning',
+              message:
+                'Rất xin lỗi, gói từ vựng hiện tại không đủ. Vui lòng thử lại sao',
+              duration: 3000,
+            }),
+          );
+          setState(0);
+          return;
+        }
 
-      //   setWordPack(wordPack);
-      //   setState(2);
-      //   return;
-      // }
+        setWordPack(wordPack);
+        setState(2);
+        return;
+      }
 
       dispatch(
         setMessage({

@@ -2,8 +2,8 @@ import Button from '@material-ui/core/Button';
 import WrongIcon from '@material-ui/icons/Cancel';
 import RightIcon from '@material-ui/icons/CheckCircle';
 import CoinIcon from '@material-ui/icons/MonetizationOn';
-//import accountApi from 'apis/accountApi';
-//import highscoreApi from 'apis/highscoreApi';
+import accountApi from 'services/accountService';
+import highscoreApi from 'services/highScoreService';
 import winAudioSrc from 'assets/audios/win.mp3';
 import cupIcon from 'assets/icons/others/cup.png';
 import { COINS, MAX, ROUTES } from 'constant';
@@ -49,22 +49,22 @@ function CorrectWordResult({ nRight, nWrong, nRightConsecutive, onReplay }) {
     (async function () {
       try {
         const newCoin = convertQuesToCoin(nRight, nWrong, coin);
-        // highscoreApi.putUpdateHighscore(HIGHSCORE_NAME.TOP_COIN, newCoin);
+        highscoreApi.putUpdateHighscore(HIGHSCORE_NAME.TOP_COIN, newCoin);
 
-        // highscoreApi.putUpdateHighscore(
-        //   HIGHSCORE_NAME.CORRECT_GAME_RIGHT,
-        //   nRight,
-        // );
+        highscoreApi.putUpdateHighscore(
+          HIGHSCORE_NAME.CORRECT_GAME_RIGHT,
+          nRight,
+        );
 
-        // highscoreApi.putUpdateHighscore(
-        //   HIGHSCORE_NAME.CORRECT_GAME_RIGHT_CONSECUTIVE,
-        //   nRightConsecutive,
-        // );
+        highscoreApi.putUpdateHighscore(
+          HIGHSCORE_NAME.CORRECT_GAME_RIGHT_CONSECUTIVE,
+          nRightConsecutive,
+        );
 
-        // const apiRes = await accountApi.putUpdateUserCoin(newCoin);
-        // if (apiRes.status === 200) {
-        //   dispatch(setUserCoin(newCoin));
-        // }
+        const apiRes = await accountApi.putUpdateUserCoin(newCoin);
+        if (apiRes.status === 200) {
+          dispatch(setUserCoin(newCoin));
+        }
       } catch (error) {}
     })();
   }, []);

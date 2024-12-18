@@ -93,7 +93,7 @@ const FEATURE_LIST = [
     title: 'Videos bài giảng',
     imgUrl: donateIcon,
     subTitle: 'LearnGo cung cấp một số videos. Cùng học hiệu quả nhất nhé!',
-    to: ROUTES.FAVORITE,
+    to: ROUTES.VIDEO,
   }
 ];
 

@@ -2,32 +2,25 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const videoSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-    },
-    description: {
-        type: String,
-        required: true,
-    },
-    url: {
-        type: String,
-        required: true,
-    },
-    uploadDate: {
-        type: Date,
-        default: Date.now,
-    },
-    language: {
-        type: String,
-        default: 'English',
-    },
+  title: {
+    type: String,
+    required: true,
+    maxLength: 200,
+    trim: true,
+  },
+  desc: {
+    type: String,
+    required: true,
+    maxLength: 300,
+    trim: true,
+  },
+  link: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 });
 
-const VideoModel = mongoose.model(
-    'video',
-    videoSchema,
-    'video',
-);
+const VideoModel = mongoose.model('Video', videoSchema, 'videos');
 
 module.exports = VideoModel;

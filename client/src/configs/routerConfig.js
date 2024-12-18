@@ -1,6 +1,7 @@
 import Logout from 'components/Logout';
 import { ROUTES } from 'constant';
 import HomePage from 'pages/Home';
+import VideoPage from 'pages/Video';
 import React from 'react';
 import { Route } from 'react-router';
 const RegisterPage = React.lazy(() => import('pages/Register'));
@@ -147,6 +148,12 @@ const routes = [
     isProtect: false,
     component: () => <FastGamePage />,
   },
+  {
+    path: ROUTES.VIDEO,
+    exact: false,
+    isProtect: true,
+    component: () => <VideoPage />,
+  }
 ];
 
 const renderRoutes = (routes, isAuth = false) => {

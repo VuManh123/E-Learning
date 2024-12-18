@@ -80,6 +80,7 @@ export const ROUTES = {
     GRAMMARLY: '/games/grammarly',
     VIP: '/games/vip',
   },
+  VIDEO: '/videos',
 };
 
 export const REGEX = {

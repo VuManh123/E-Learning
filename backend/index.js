@@ -18,6 +18,7 @@ const sentenceApi = require('./routes/SentenceRoute');
 const grammarApi = require('./routes/GrammarRoute');
 const highscoreApi = require('./routes/HighScoreRoute');
 const passportConfig = require('./middlewares/AuthMiddleware');
+const videoApi = require('./routes/VideoRoute');
 
 const app = express();
 const PORT = process.env.PORT || 3000
@@ -43,13 +44,14 @@ async function connectDB() {
 
 connectDB();
 
-// ================== config ==================
+// ================== CONFIG ==================
 app.use(express.json({ limit: MAX.SIZE_JSON_REQUEST }));
 app.use(express.urlencoded({ limit: MAX.SIZE_JSON_REQUEST }));
 app.use(cookieParser());
 app.use(cors(corsConfig));
 
-// ================== Apis ==================
+
+// ================== APIS ==================
 const BASE_URL = '/apis';
 app.use(`${BASE_URL}/account`, accountApi);
 app.use(`${BASE_URL}/word`, wordApi);
@@ -58,6 +60,7 @@ app.use(`${BASE_URL}/flashcard`, flashcardApi);
 app.use(`${BASE_URL}/common`, commonApi);
 app.use(`${BASE_URL}/sentence`, sentenceApi);
 app.use(`${BASE_URL}/grammar`, grammarApi);
+app.use(`${BASE_URL}/video`, videoApi);
 app.use(
   `${BASE_URL}/highscore`,
   passportConfig.jwtAuthentication,

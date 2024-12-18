@@ -7,8 +7,8 @@ import winAudioSrc from 'assets/audios/win.mp3';
 import { onPlayAudio } from 'helper/speaker.helper';
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-//import highscoreApi from 'apis/highscoreApi';
-//import accountApi from 'apis/accountApi';
+import highscoreApi from 'services/highScoreService';
+import accountApi from 'services/accountService';
 import { setUserCoin } from 'redux/slices/userInfo.slice';
 import { HIGHSCORE_NAME } from 'constant/game';
 import { useDispatch, useSelector } from 'react-redux';
@@ -109,12 +109,12 @@ function Result({ score }) {
       try {
         const newCoin = coin + score;
 
-        // highscoreApi.putUpdateHighscore(HIGHSCORE_NAME.FAST_GAME, score);
+        highscoreApi.putUpdateHighscore(HIGHSCORE_NAME.FAST_GAME, score);
 
-        // const apiRes = await accountApi.putUpdateUserCoin(newCoin);
-        // if (apiRes.status === 200) {
-        //   dispatch(setUserCoin(newCoin));
-        // }
+        const apiRes = await accountApi.putUpdateUserCoin(newCoin);
+        if (apiRes.status === 200) {
+          dispatch(setUserCoin(newCoin));
+        }
       } catch (error) {}
     })();
     return () => {};

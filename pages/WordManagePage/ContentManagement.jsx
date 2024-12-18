@@ -70,7 +70,6 @@ function ContentManagement() {
   return (
     <Box sx={{ height: 500, width: '100%', mt: 4 }}>
       <Typography variant="h5" sx={{ mb: 2 }}>Quản Lý Từ Vựng</Typography>
-      <Button variant="contained" color="primary" onClick={handleCreate} sx={{ mb: 2 }}>Thêm Nội Dung</Button>
       <DataGrid rows={rows} columns={columns} pageSize={5} />
 
       {/* Dialog for Add/Edit */}
@@ -96,7 +95,8 @@ function ContentManagement() {
           <Button onClick={handleClose} color="secondary">Hủy</Button>
           <Button onClick={handleSave} color="primary">Lưu</Button>
         </DialogActions>
-      </Dialog>
+      </Dialog><br /><br />
+      <Button variant="contained" color="primary" onClick={handleCreate} sx={{ mb: 2 }}>Thêm Câu Mới</Button>
     </Box>
   );
 }

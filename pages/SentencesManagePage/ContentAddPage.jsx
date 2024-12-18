@@ -5,15 +5,15 @@ import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
 
 function ContentAddPage() {
-    const [word, setWord] = useState('');
+    const [sentences, setSentences] = useState('');
     const [meaning, setMeaning] = useState('');
-    const [exampleSentence, setExampleSentence] = useState('');
+    const [note, setNote] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const vocabularyItem = {
-            word,
+            sentences,
             meaning,
             exampleSentence,
         };
@@ -44,25 +44,24 @@ function ContentAddPage() {
             <div className='navbar'><Navbar/></div>
             <div className='sbmc'>
                 <div><Sidebar/></div>
-                <div style={{flexGrow: "1", maxWidth: "75%", maxHeight: "30%"}}>
-                    <h1>Tạo Câu Mới</h1>
+                <div style={{padding: "10px", flexGrow: "1", width: "150px", height: "200px"}}>
                     <form onSubmit={handleSubmit} className="form">
                         <div className="form-group">
                             <label>NỘI DUNG CÂU BẰNG TIẾNG ANH</label>
-                            <textarea 
-                                type="text" 
-                                value={word} 
-                                onChange={(e) => setWord(e.target.value)} 
-                                required 
+                            <textarea
+                                type="text"
+                                value={sentences}
+                                onChange={(e) => setSentences(e.target.value)} 
+                                required
                             />
                         </div>
                         <div className="form-group">
                             <label>NỘI DUNG CÂU BẰNG TIẾNG VIỆT</label>
                             <textarea
-                                type="text" 
-                                value={meaning} 
+                                type="text"
+                                value={meaning}
                                 onChange={(e) => setMeaning(e.target.value)} 
-                                required 
+                                required
                             />
                         </div>
                         <div className="form-group">
@@ -71,17 +70,16 @@ function ContentAddPage() {
                         </div>
                         <div className="form-group">
                             <label>Ghi chú</label>
-                            <textarea 
-                                value={exampleSentence} 
-                                onChange={(e) => setExampleSentence(e.target.value)} 
+                            <textarea
+                                value={note} 
+                                onChange={(e) => setNote(e.target.value)} 
                                 required
                             ></textarea>
                         </div>
                         <div className="form-group">
-                            <label>KIỂM TRA</label>
                             <BasicCheckbox/>
                         </div>
-                        <button type="submit" className="btn">Add Vocabulary</button>
+                        <button type="submit" className="btn">Thêm câu</button>
                     </form>
                 </div>
             </div>

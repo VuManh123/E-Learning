@@ -11,7 +11,7 @@ function ContentPage() {
       <div className='navbar'><Navbar/></div>
       <div className='sbmc'>
         <div><Sidebar/></div>
-        <div>
+        <div style={{flexGrow: "1"}}>
           <Box sx={{ mt: 4, px: 2 }}>
             <Typography variant="h5" sx={{ mb: 2 }}>
             </Typography>

@@ -6,7 +6,7 @@ function Sidebar() {
   return (
     <div
       style={{
-        width: "250px",
+        width: "80%",
         backgroundColor: "#2C3E50",
         color: "#fff",
         display: "flex",
@@ -18,28 +18,28 @@ function Sidebar() {
     >
       <h2 style={{ marginBottom: "16px" }}>Menu</h2>
       <ul style={{ listStyleType: "none", padding: 0 }}>
-        <li style={{ margin: "10px 0" }}>
-          <Link to="/homepage" style={{ textDecoration: "none", color: "white" }}>
+        <li style={{ margin: "30px 0" }}>
+          <Link to="/homepage" className="menubtn">
             Dashboard
           </Link>
         </li>
-        <li style={{ margin: "10px 0" }}>
-          <Link to="/contents" style={{ textDecoration: "none", color: "white" }}>
+        <li style={{ margin: "30px 0" }}>
+          <Link to="/contents" className="menubtn">
             Quản lí câu
           </Link>
         </li>
-        <li style={{ margin: "10px 0" }}>
-          <Link to="/contentw" style={{ textDecoration: "none", color: "white" }}>
+        <li style={{ margin: "30px 0" }}>
+          <Link to="/contentw" className="menubtn">
             Quản lí từ mới
           </Link>
         </li>
-        <li style={{ margin: "10px 0" }}>
-          <Link to="/contentv" style={{ textDecoration: "none", color: "white" }}>
+        <li style={{ margin: "30px 0" }}>
+          <Link to="/contentv" className="menubtn">
             Quản lí video
           </Link>
         </li>
-        <li style={{ margin: "10px 0" }}>
-          <Link to="/userm" style={{ textDecoration: "none", color: "white" }}>
+        <li style={{ margin: "30px 0" }}>
+          <Link to="/userm" className="menubtn">
             Quản lí người dùng
           </Link>
         </li>

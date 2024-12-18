@@ -18,7 +18,7 @@ function ContentAddPage() {
         };
 
         // Send vocabulary item to the server
-        fetch('/api/vocabulary', {
+        /*fetch('/api/vocabulary', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ function ContentAddPage() {
             .catch((error) => {
                 console.error('Error adding vocabulary:', error);
                 alert('Failed to add vocabulary.');
-            });
+            });*/
     };
 
     return (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Box, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const initialRows = [
   { id: 1, type: 'Câu', content: 'Hello World' },
@@ -60,10 +61,16 @@ function ContentManagement() {
     },
   ];
 
+  const navigate = useNavigate();
+
+  const handleCreate = () => {
+    navigate("/addw");
+  };
+
   return (
     <Box sx={{ height: 500, width: '100%', mt: 4 }}>
       <Typography variant="h5" sx={{ mb: 2 }}>Quản Lý Nội Dung Học Tập</Typography>
-      <Button variant="contained" color="primary" onClick={() => handleOpen(null)} sx={{ mb: 2 }}>Thêm Nội Dung</Button>
+      <Button variant="contained" color="primary" onClick={handleCreate} sx={{ mb: 2 }}>Thêm Nội Dung</Button>
       <DataGrid rows={rows} columns={columns} pageSize={5} />
 
       {/* Dialog for Add/Edit */}
@@ -72,7 +79,7 @@ function ContentManagement() {
         <DialogContent>
           <TextField
             margin="dense"
-            label="Loại Nội Dung"
+            label="Các từ vựng đã thêm "
             fullWidth
             value={newContent.type}
             onChange={(e) => setNewContent({ ...newContent, type: e.target.value })}

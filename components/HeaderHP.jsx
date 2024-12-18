@@ -13,7 +13,7 @@ function Header() {
 
         <Box>
           <Button color="inherit" onClick={() => navigate(-1)}>
-            Trang chủ
+            Quay lại
           </Button>
         </Box>
       </Toolbar>

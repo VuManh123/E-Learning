@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import BasicCheckbox from '../components/BasicCheckbox';
-import HeaderHP from '../components/HeaderHP';
-import ImageUploader from '../components/ImageUploader';
-import LevelSelector from '../components/LevelSelector';
-import WordTypeSelector from '../components/WordTypeSelector';
+import BasicCheckbox from '../../components/BasicCheckbox';
+import HeaderHP from '../../components/HeaderHP';
+import ImageUploader from '../../components/ImageUploader';
+import LevelSelector from '../../components/LevelSelector';
+import WordTypeSelector from '../../components/WordTypeSelector';
 
 function ContentAddPage() {
     const [word, setWord] = useState('');
@@ -45,7 +45,7 @@ function ContentAddPage() {
         <>
         <HeaderHP/>
         <div className="container">
-            <h1>Tạo Câu Mới</h1>
+            <h1>TẠO TỪ VỰNG MỚI</h1>
             <form onSubmit={handleSubmit} className="form">
                 <div className="form-group">
                     <label>TÊN TỪ VỰNG</label>

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Box, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const initialRows = [
@@ -69,7 +69,7 @@ function ContentManagement() {
 
   return (
     <Box sx={{ height: 500, width: '100%', mt: 4 }}>
-      <Typography variant="h5" sx={{ mb: 2 }}>Quản Lý Nội Dung Học Tập</Typography>
+      <Typography variant="h5" sx={{ mb: 2 }}>Quản Lý Từ Vựng</Typography>
       <Button variant="contained" color="primary" onClick={handleCreate} sx={{ mb: 2 }}>Thêm Nội Dung</Button>
       <DataGrid rows={rows} columns={columns} pageSize={5} />
 

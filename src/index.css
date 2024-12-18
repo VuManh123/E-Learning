@@ -87,3 +87,17 @@ textarea {
   grid-template-columns: repeat(4, 1fr); /* 4 cột, mỗi cột chiếm 1 phần không gian bằng nhau */
   gap: 10px;
 }
+
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.Logo {
+  width: 100px; /* Đặt chiều rộng của div */
+  height: 100px; /* Đặt chiều cao của div */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import HeaderHP from '../components/HeaderHP';
-import LevelSelector from '../components/LevelSelector';
+import HeaderHP from '../../components/HeaderHP';
+import LevelSelector from '../../components/LevelSelector';
 
 function VideoAddPage() {
     const [title, setTitle] = useState('');

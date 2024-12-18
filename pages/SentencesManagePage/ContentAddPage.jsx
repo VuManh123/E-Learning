@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import BasicCheckbox from '../components/BasicCheckbox';
-import HeaderHP from '../components/HeaderHP';
-import MultiSelector from '../components/MultiSelector';
+import BasicCheckbox from '../../components/BasicCheckbox';
+import HeaderHP from '../../components/HeaderHP';
+import MultiSelector from '../../components/MultiSelector';
 
 function ContentAddPage() {
     const [word, setWord] = useState('');

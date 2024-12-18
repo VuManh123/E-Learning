@@ -1,8 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import ContentManagement from '../components/ContentManagement';
-import HeaderHP from '../components/HeaderHP';
+import HeaderHP from '../../components/HeaderHP';
+import ContentManagement from './ContentManagement';
 
 function ContentPage() {
   return (

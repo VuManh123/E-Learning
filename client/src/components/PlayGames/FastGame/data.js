@@ -1,4 +1,4 @@
-//import gameApi from 'apis/gameApi';
+import gameApi from 'services/gameService';
 import { TOPICS } from 'constant/topics';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -25,19 +25,19 @@ function FastGameData() {
 
     (async function () {
       try {
-        // const apiRes = await gameApi.getWordPackFG(topicKey);
+        const apiRes = await gameApi.getWordPackFG(topicKey);
 
-        // if (apiRes.status === 200 && isSub) {
-        //   const { wordPack = [] } = apiRes.data;
-        //   if (wordPack.length === 0) {
-        //     const message =
-        //       'Xin lỗi! Danh sách từ cho chủ đề này hiện tại không đủ. Vui lòng chọn lại !';
-        //     dispatch(setMessage({ type: 'warning', message }));
-        //     setList([]);
-        //     return;
-        //   }
-        //   setList([...wordPack]);
-        // }
+        if (apiRes.status === 200 && isSub) {
+          const { wordPack = [] } = apiRes.data;
+          if (wordPack.length === 0) {
+            const message =
+              'Xin lỗi! Danh sách từ cho chủ đề này hiện tại không đủ. Vui lòng chọn lại !';
+            dispatch(setMessage({ type: 'warning', message }));
+            setList([]);
+            return;
+          }
+          setList([...wordPack]);
+        }
       } catch (error) {
         const message =
           'Xin lỗi! Danh sách từ cho chủ đề này hiện tại không đủ. Vui lòng chọn lại !';

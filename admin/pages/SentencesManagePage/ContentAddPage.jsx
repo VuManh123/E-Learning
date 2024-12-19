@@ -33,6 +33,22 @@ function ContentAddPage() {
 
         alert('Đã thêm câu');
         resetForm();
+
+        fetch("http://localhost:5000/api/sentences/contribute/add-sentence", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(vocabularyItem),
+          })
+            .then((response) => response.json()) // Chuyển response thành JSON
+            .then((data) => {
+              console.log("Phản hồi từ server:", data);
+              alert(data.message); // Hiển thị message từ server
+            })
+            .catch((error) => {
+              console.error("Lỗi khi gửi yêu cầu:", error);
+            });
     };
         // Send vocabulary item to the server
         /*fetch('/api/vocabulary', {

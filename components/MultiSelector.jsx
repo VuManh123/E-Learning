@@ -1,7 +1,7 @@
 import { Autocomplete, Chip, TextField } from '@mui/material';
 import React from 'react';
 
-const MultiSelector = () => {
+const MultiSelector = ({onSelectionChange}) => {
     const options = [
         { label: "JavaScript", id: 1 },
         { label: "React", id: 2 },
@@ -12,15 +12,21 @@ const MultiSelector = () => {
 
     const [selectedOptions, setSelectedOptions] = React.useState([]);
 
+    const handleChange = (event, newValue) => {
+        setSelectedOptions(newValue);
+        if (onSelectionChange) {
+            const labels = newValue.map((item) => item.label)
+            onSelectionChange(labels); // Gửi dữ liệu ra ngoài
+        }
+      };
+
     return (
         <Autocomplete
             multiple
             options={options}
             getOptionLabel={(option) => option.label}
             value={selectedOptions}
-            onChange={(event, newValue) => {
-                setSelectedOptions(newValue);
-            }}
+            onChange={handleChange}
             renderTags={(value, getTagProps) =>
                 value.map((option, index) => (
                     <Chip

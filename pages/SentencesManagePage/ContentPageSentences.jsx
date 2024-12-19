@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar';
 
 function ContentPageSentences() {
   return (
-    <div>
+    <div className='page'>
       <div className='navbar'><Navbar/></div>
       <div className='sbmc'>
         <div><Sidebar/></div>

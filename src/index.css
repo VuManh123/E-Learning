@@ -115,3 +115,8 @@ textarea {
   font-size: larger;
   color: white;
 }
+
+.page {
+  border-style: solid;
+  border-color: grey;
+}

@@ -10,7 +10,7 @@ const initialUsers = [
   { id: 3, username: 'admin', email: 'admin@example.com', status: 'Active' },
 ];
 
-function UserPage() {
+function UserPageHP() {
   const [users, setUsers] = useState(initialUsers);
   const [open, setOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -63,14 +63,11 @@ function UserPage() {
   ];
 
   return (
-    <div className='page'>
-      <div className='navbar'><Navbar/></div>
-      <div className='sbmc' style={{display: 'flex'}}>
-        <div><Sidebar/></div>
+    <>
         <div style={{flexGrow: "1", width: "300px"}}>
         <Box sx={{ height: '88%', width: '100%', mt: 4 }}>
           <Typography variant="h5" sx={{ mb: 2 }}>
-            Quản Lý Người Dùng
+            Danh Sách Người Dùng
           </Typography>
           <DataGrid rows={users} columns={columns} pageSize={5} />
 
@@ -112,9 +109,8 @@ function UserPage() {
           </Dialog>
         </Box>
         </div>
-      </div>
-    </div>
+    </>
   );
 }
 
-export default UserPage;
+export default UserPageHP;

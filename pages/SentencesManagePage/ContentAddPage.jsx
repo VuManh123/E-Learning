@@ -8,6 +8,16 @@ function ContentAddPage() {
     const [sentences, setSentences] = useState('');
     const [meaning, setMeaning] = useState('');
     const [note, setNote] = useState('');
+    const [selectedLabels, setSelectedLabels] = useState([]);
+    const [isChecked, setIsChecked] = useState(false);
+
+    const resetForm = () => {
+        setSentences('');
+        setMeaning('');
+        setNote('');
+        setSelectedLabels([]);
+        setIsChecked(false);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,9 +25,16 @@ function ContentAddPage() {
         const vocabularyItem = {
             sentences,
             meaning,
-            exampleSentence,
+            note,
+            selectedLabels,
+            isChecked,
         };
 
+        console.log(vocabularyItem);
+
+        alert('Đã thêm câu');
+        resetForm();
+    };
         // Send vocabulary item to the server
         /*fetch('/api/vocabulary', {
             method: 'POST',
@@ -37,10 +54,14 @@ function ContentAddPage() {
                 console.error('Error adding vocabulary:', error);
                 alert('Failed to add vocabulary.');
             });*/
-    };
+
+
+    const handleSelectionChange = (labels) => {
+        setSelectedLabels(labels); // Chỉ nhận mảng label
+      };
 
     return (
-        <div>
+        <div className='page'>
             <div className='navbar'><Navbar/></div>
             <div className='sbmc'>
                 <div><Sidebar/></div>
@@ -66,7 +87,7 @@ function ContentAddPage() {
                         </div>
                         <div className="form-group">
                             <label>CHỦ ĐỀ LIÊN QUAN</label>
-                            <MultiSelector/>
+                            <MultiSelector onSelectionChange={handleSelectionChange}/>
                         </div>
                         <div className="form-group">
                             <label>Ghi chú</label>
@@ -76,8 +97,11 @@ function ContentAddPage() {
                                 required
                             ></textarea>
                         </div>
-                        <div className="form-group">
-                            <BasicCheckbox/>
+                        <div className="form-group" style={{display: "flex"}}>
+                            <label>
+                                <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} />
+                                Đã Kiểm Tra
+                            </label>
                         </div>
                         <button type="submit" className="btn">Thêm câu</button>
                     </form>

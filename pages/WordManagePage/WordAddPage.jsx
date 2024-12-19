@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import BasicCheckbox from '../../components/BasicCheckbox';
-import HeaderHP from '../../components/HeaderHP';
 import ImageUploader from '../../components/ImageUploader';
 import LevelSelector from '../../components/LevelSelector';
 import WordTypeSelector from '../../components/WordTypeSelector';
@@ -10,22 +9,46 @@ import WordSelector from '../../components/WordSelector';
 
 function ContentAddPage() {
     const [word, setWord] = useState('');
-    const [meaning, setMeaning] = useState('');
-    const [exampleSentence, setExampleSentence] = useState('');
+    const [mean, setMean] = useState('');
+    const [examples, setExamples] = useState('');
+    const [type, setType] = useState('');
+    const [level, setLevel] = useState('');
+    const [phonetic, setPhonetic] = useState('');
     const [note, setNote] = useState('');
-    
+    const [specialty, setSpecialty] = useState('');
+    const [topics, setTopics] = useState('')
+    const [synonyms, setSynonyms] = useState('');
+    const [antonyms, setAntonyms] = useState('');
+    const [isChecked, setIsChecked] = useState(false);
+    const [picture, setPicture] = useState('');
+    const [wordType, setWordType] = useState("");
+
+    const handleTypeChange = (type) => {
+        setWordType(type);  // Cập nhật kiểu từ đã chọn trong state của component cha
+        console.log("Kiểu từ đã chọn:", type);  // Hiển thị kết quả chọn
+      };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const vocabularyItem = {
+        const WordItem = {
             word,
             meaning,
-            exampleSentence,
+            type,
+            level,
+            phonetic,
+            examples,
+            picture,
+            specialty,
+            topics,
+            synonyms,
+            antonyms,
+            note,
+            isChecked,
         };
 
         // Send vocabulary item to the server
-        fetch('/api/vocabulary', {
+        /*fetch('/api/vocabulary', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,11 +65,11 @@ function ContentAddPage() {
             .catch((error) => {
                 console.error('Error adding vocabulary:', error);
                 alert('Failed to add vocabulary.');
-            });
+            });*/
     };
 
     return (
-        <div>
+        <div className='page'>
         <div className='navbar'><Navbar/></div>
         <div className='sbmc'>
             <div><Sidebar/></div>
@@ -66,14 +89,14 @@ function ContentAddPage() {
                         <input 
                             type="text" 
                             value={meaning} 
-                            onChange={(e) => setMeaning(e.target.value)} 
+                            onChange={(e) => setMean(e.target.value)} 
                             required 
                         />
                     </div>
 
                     <div className="form-group">
                         <label>LOẠI TỪ</label>
-                        <WordTypeSelector/>
+                        <WordTypeSelector onTypeChange={handleTypeChange}/>
                     </div>
 
                     <div className="form-group">
@@ -86,7 +109,7 @@ function ContentAddPage() {
                         <input 
                             type="text" 
                             value={meaning} 
-                            onChange={(e) => setMeaning(e.target.value)} 
+                            onChange={(e) => setPhonetic(e.target.value)} 
                             required 
                         />
                     </div>
@@ -96,7 +119,7 @@ function ContentAddPage() {
                         <input 
                             type="text" 
                             value={exampleSentence} 
-                            onChange={(e) => setExampleSentence(e.target.value)} 
+                            onChange={(e) => setExamples(e.target.value)} 
                             required 
                         />
                     </div>
@@ -111,7 +134,7 @@ function ContentAddPage() {
                         <input 
                             type="text" 
                             value={word} 
-                            onChange={(e) => setWord(e.target.value)}
+                            onChange={(e) => setSpecialty(e.target.value)}
                             required 
                         />
                     </div>
@@ -121,7 +144,7 @@ function ContentAddPage() {
                         <input 
                             type="text" 
                             value={word} 
-                            onChange={(e) => setWord(e.target.value)}
+                            onChange={(e) => setTopics(e.target.value)}
                             required 
                         />
                     </div>
@@ -144,9 +167,11 @@ function ContentAddPage() {
                             required
                         ></textarea>
                     </div>
-                    <div className="form-group">
-                        <label>KIỂM TRA</label>
-                        <BasicCheckbox/>
+                    <div className="form-group" style={{display: "flex"}}>
+                            <label>
+                                <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} />
+                                Đã Kiểm Tra
+                            </label>
                     </div>
                     <button type="submit" className="btn">Xác nhận</button>
                 </form>

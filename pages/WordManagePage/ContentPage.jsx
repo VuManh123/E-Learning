@@ -7,7 +7,7 @@ import Navbar from '../Navbar';
 
 function ContentPage() {
   return (
-    <div>
+    <div className='page'>
       <div className='navbar'><Navbar/></div>
       <div className='sbmc'>
         <div><Sidebar/></div>

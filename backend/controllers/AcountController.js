@@ -94,6 +94,8 @@ exports.postLogin = async (req, res) => {
     res.cookie(KEYS.JWT_TOKEN, token, {
       httpOnly: true,
       expires: new Date(Date.now() + COOKIE_EXPIRES_TIME),
+      secure: process.env.NODE_ENV === 'production', 
+      sameSite: 'None', 
     });
 
     return res.status(200).json({

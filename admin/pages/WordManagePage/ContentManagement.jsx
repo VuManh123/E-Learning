@@ -2,6 +2,7 @@ import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextFie
 import { DataGrid } from '@mui/x-data-grid';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import WordAddPage from './WordAddPage'
 
 const initialRows = [
   { id: 1, type: 'Câu', content: 'Hello World' },
@@ -48,7 +49,7 @@ function ContentManagement() {
     { field: 'id', headerName: 'ID', width: 90 },
     { field: 'type', headerName: 'Từ Vựng', width: 300 },
     { field: 'content', headerName: 'Nghĩa', width: 300 },
-    {field: 'ischecked', headerName: 'trạng thái', width: 170},
+    { field: 'ischecked', headerName: 'trạng thái', width: 170},
     {
       field: 'actions',
       headerName: 'Hành Động',

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import HeaderHP from '../../components/HeaderHP';
 import LevelSelector from '../../components/LevelSelector';
 import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
 
 function VideoAddPage() {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [video, setVideo] = useState(null);
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+    const [html, setHtml] = useState("");
+
+    const handleDateChange = (event) => {
+        setHtml(event.target.value);
+    };
 
     const handleVideoUpload = (e) => {
         setVideo(e.target.files[0]);
@@ -15,18 +18,33 @@ function VideoAddPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!video) {
+        
+        /*if (!video) {
             alert('Please upload a video!');
             return;
         }
 
+                                <input 
+                            type="file" 
+                            accept="video/*" 
+                            onChange={handleVideoUpload} 
+                            required
+                        />
+        
         const formData = new FormData();
         formData.append('title', title);
         formData.append('content', content);
-        formData.append('video', video);
+        formData.append('video', video);*/
+        
+        const data = {
+            title,
+            desc,
+            html,
+        }
 
+        console.log(data);
         // Send formData to the server
-        fetch('/api/videos', {
+        /*fetch('/api/videos', {
             method: 'POST',
             body: formData,
         })
@@ -40,7 +58,7 @@ function VideoAddPage() {
             .catch((error) => {
                 console.error('Error uploading video:', error);
                 alert('Failed to upload video.');
-            });
+            });*/
     };
 
     return (
@@ -48,7 +66,7 @@ function VideoAddPage() {
         <div className='navbar'><Navbar/></div>
         <div className='sbmc'>
             <div><Sidebar/></div>
-            <div style={{}}>
+            <div style={{overflowY: "scroll", flexGrow: "1", maxHeight: "78vh", padding: "15px 10px"}}>
                 <form onSubmit={handleSubmit} className="form">
                     <div className="form-group">
                         <label>TIÊU ĐỀ:</label>
@@ -62,23 +80,17 @@ function VideoAddPage() {
                     <div className="form-group">
                         <label>MIÊU TẢ:</label>
                         <textarea 
-                            value={content} 
-                            onChange={(e) => setContent(e.target.value)} 
+                            value={desc} 
+                            onChange={(e) => setDesc(e.target.value)} 
                             required
                         ></textarea>
                     </div>
                     <div className="form-group">
                         <label>LINK URL:</label>
-                        <input 
-                            type="file" 
-                            accept="video/*" 
-                            onChange={handleVideoUpload} 
-                            required
-                        />
                     </div>
                     <div className="form-group">
                         <label>NGÀY TẢI LÊN:</label>
-                        <textarea></textarea>
+                        <input type="date" id='date' value={html} onChange={handleDateChange} />
                     </div>
                     <div className="form-group">
                         <label>NGÔN NGỮ</label>

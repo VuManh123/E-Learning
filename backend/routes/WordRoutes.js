@@ -1,5 +1,5 @@
 const wordApi = require('express').Router();
-const wordController = require('../controllers/wordController');
+const wordController = require('../controllers/WordController');
 const { jwtAuthentication } = require('../middlewares/AuthMiddleware');
 
 wordApi.post('/contribute/add-word', wordController.postContributeWord);

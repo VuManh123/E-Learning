@@ -96,7 +96,7 @@ function ContentManagementVideo() {
           <Button onClick={handleClose} color="secondary">Hủy</Button>
           <Button onClick={handleSave} color="primary">Lưu</Button>
         </DialogActions>
-      </Dialog><br /><br /><br />
+      </Dialog><br /><br />
       <Button variant="contained" color="primary" onClick={handleCreate} sx={{ mb: 2 }}>Thêm Video</Button>
     </Box>
   );

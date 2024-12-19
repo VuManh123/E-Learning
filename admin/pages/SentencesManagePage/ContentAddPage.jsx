@@ -4,17 +4,21 @@ import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
 
 function ContentAddPage() {
-    const [sentences, setSentences] = useState("");
-    const [meaning, setMeaning] = useState("");
+    const [sentence, setSentence] = useState("");
+    const [mean, setMean] = useState("");
     const [note, setNote] = useState("");
-    const [selectedLabels, setSelectedLabels] = useState([]);
+    const [topics, setTopics] = useState([]);
     const [isChecked, setIsChecked] = useState(false);
 
+    const handleSelectionChange = (labels) => {
+        setTopics(labels); // Chỉ nhận mảng label
+    };
+
     const resetForm = () => {
-        setSentences("");
-        setMeaning("");
+        setSentence("");
+        setMean("");
         setNote("");
-        setSelectedLabels([]);
+        setTopics([]);
         setIsChecked(false);
     };
 
@@ -22,10 +26,10 @@ function ContentAddPage() {
         e.preventDefault();
 
         const vocabularyItem = {
-            sentences,
-            meaning,
+            sentence,
+            mean,
             note,
-            selectedLabels,
+            topics,
             isChecked,
         };
 
@@ -52,10 +56,6 @@ function ContentAddPage() {
         resetForm();
     };
 
-    const handleSelectionChange = (labels) => {
-        setSelectedLabels(labels); // Chỉ nhận mảng label
-      };
-
     return (
         <div className='page'>
             <div className='navbar'><Navbar/></div>
@@ -67,8 +67,8 @@ function ContentAddPage() {
                             <label>NỘI DUNG CÂU BẰNG TIẾNG ANH</label>
                             <textarea
                                 type="text"
-                                value={sentences}
-                                onChange={(e) => setSentences(e.target.value)} 
+                                value={sentence}
+                                onChange={(e) => setSentence(e.target.value)} 
                                 required
                             />
                         </div>
@@ -76,8 +76,8 @@ function ContentAddPage() {
                             <label>NỘI DUNG CÂU BẰNG TIẾNG VIỆT</label>
                             <textarea
                                 type="text"
-                                value={meaning}
-                                onChange={(e) => setMeaning(e.target.value)} 
+                                value={mean}
+                                onChange={(e) => setMean(e.target.value)} 
                                 required
                             />
                         </div>

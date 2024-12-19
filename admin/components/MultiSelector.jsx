@@ -3,11 +3,11 @@ import React from 'react';
 
 const MultiSelector = ({onSelectionChange}) => {
     const options = [
-        { label: "JavaScript", id: 1 },
-        { label: "React", id: 2 },
-        { label: "Node.js", id: 3 },
-        { label: "MongoDB", id: 4 },
-        { label: "TypeScript", id: 5 },
+        { label: "School", id: 1 },
+        { label: "Family", id: 2 },
+        { label: "Company", id: 3 },
+        { label: "Society", id: 4 },
+        { label: "Nature", id: 5 },
     ];
 
     const [selectedOptions, setSelectedOptions] = React.useState([]);

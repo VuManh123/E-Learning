@@ -1,6 +1,5 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
-import HeaderHP from '../../components/HeaderHP';
 import ContentManagement from './ContentManagement';
 import Sidebar from '../Sidebar';
 import Navbar from '../Navbar';

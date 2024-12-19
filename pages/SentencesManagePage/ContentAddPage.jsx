@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import BasicCheckbox from '../../components/BasicCheckbox';
 import MultiSelector from '../../components/MultiSelector';
 import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
 
 function ContentAddPage() {
-    const [sentences, setSentences] = useState('');
-    const [meaning, setMeaning] = useState('');
-    const [note, setNote] = useState('');
+    const [sentences, setSentences] = useState("");
+    const [meaning, setMeaning] = useState("");
+    const [note, setNote] = useState("");
     const [selectedLabels, setSelectedLabels] = useState([]);
     const [isChecked, setIsChecked] = useState(false);
 
     const resetForm = () => {
-        setSentences('');
-        setMeaning('');
-        setNote('');
+        setSentences("");
+        setMeaning("");
+        setNote("");
         setSelectedLabels([]);
         setIsChecked(false);
     };
@@ -65,7 +64,7 @@ function ContentAddPage() {
             <div className='navbar'><Navbar/></div>
             <div className='sbmc'>
                 <div><Sidebar/></div>
-                <div style={{padding: "10px", width: "500px", height: "150px"}}>
+                <div style={{overflowY: "scroll", flexGrow: "1", maxHeight: "78vh", padding: "15px 10px"}}>
                     <form onSubmit={handleSubmit} className="form">
                         <div className="form-group">
                             <label>NỘI DUNG CÂU BẰNG TIẾNG ANH</label>

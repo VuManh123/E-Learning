@@ -44,7 +44,7 @@ function ContentAddPage() {
             <div className='navbar'><Navbar/></div>
             <div className='sbmc'>
                 <div><Sidebar/></div>
-                <div style={{padding: "10px", flexGrow: "1", width: "150px", height: "200px"}}>
+                <div style={{padding: "10px", width: "500px", height: "150px"}}>
                     <form onSubmit={handleSubmit} className="form">
                         <div className="form-group">
                             <label>NỘI DUNG CÂU BẰNG TIẾNG ANH</label>

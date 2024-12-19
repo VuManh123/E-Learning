@@ -67,8 +67,8 @@ function UserPage() {
       <div className='navbar'><Navbar/></div>
       <div className='sbmc' style={{display: 'flex'}}>
         <div><Sidebar/></div>
-        <div>
-        <Box sx={{ height: 500, width: '100%', mt: 4 }}>
+        <div style={{flexGrow: "1", width: "300px"}}>
+        <Box sx={{ height: '88%', width: '100%', mt: 4 }}>
           <Typography variant="h5" sx={{ mb: 2 }}>
             Quản Lý Người Dùng
           </Typography>

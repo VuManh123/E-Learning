@@ -6,7 +6,7 @@ function Sidebar() {
   return (
     <div
       style={{
-        width: "80%",
+        width: "150px",
         backgroundColor: "#2C3E50",
         color: "#fff",
         display: "flex",

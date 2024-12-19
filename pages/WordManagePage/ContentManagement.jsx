@@ -46,8 +46,9 @@ function ContentManagement() {
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
-    { field: 'type', headerName: 'Loại Nội Dung', width: 150 },
-    { field: 'content', headerName: 'Nội Dung', width: 300 },
+    { field: 'type', headerName: 'Từ Vựng', width: 300 },
+    { field: 'content', headerName: 'Nghĩa', width: 300 },
+    {field: 'ischecked', headerName: 'trạng thái', width: 170},
     {
       field: 'actions',
       headerName: 'Hành Động',

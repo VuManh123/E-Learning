@@ -9,7 +9,7 @@ const ImageUploader = ({ onImageUpload }) => {
     if (file) {
       const objectUrl = URL.createObjectURL(file);
       setPreview(objectUrl);
-      onImageUpload(file);
+      onImageUpload(file.name);
     }
   };
 

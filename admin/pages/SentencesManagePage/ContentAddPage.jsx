@@ -32,9 +32,8 @@ function ContentAddPage() {
         console.log(vocabularyItem);
 
         alert('Đã thêm câu');
-        resetForm();
 
-        fetch("http://localhost:5000/api/sentences/contribute/add-sentence", {
+        /*fetch("http://localhost:5173/routes/SentenceRoute/contribute/add-sentence", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -48,28 +47,10 @@ function ContentAddPage() {
             })
             .catch((error) => {
               console.error("Lỗi khi gửi yêu cầu:", error);
-            });
-    };
-        // Send vocabulary item to the server
-        /*fetch('/api/vocabulary', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(vocabularyItem),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                alert('Vocabulary item added successfully!');
-                setWord('');
-                setMeaning('');
-                setExampleSentence('');
-            })
-            .catch((error) => {
-                console.error('Error adding vocabulary:', error);
-                alert('Failed to add vocabulary.');
             });*/
-
+        
+        resetForm();
+    };
 
     const handleSelectionChange = (labels) => {
         setSelectedLabels(labels); // Chỉ nhận mảng label

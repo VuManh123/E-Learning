@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
 const WordSelector = ({ onChange, placeholder }) => {
@@ -18,7 +18,8 @@ const WordSelector = ({ onChange, placeholder }) => {
   const handleChange = (selected) => {
     setSelectedOptions(selected); // Cập nhật danh sách đã chọn
     if (onChange) {
-      onChange(selected); // Callback gửi dữ liệu ra ngoài (nếu được truyền)
+      const labels = selected.map(option => option.label);
+      onChange(labels); // Callback gửi dữ liệu ra ngoài (nếu được truyền)
     }
   };
 
